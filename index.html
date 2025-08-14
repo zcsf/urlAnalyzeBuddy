@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL 解析助手</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>URL 解析助手</h1>
+            <p class="subtitle">简单易用的网址分析工具，帮助运营人员轻松处理网址</p>
+        </header>
+        
+        <!-- 帮助说明区域 -->
+        <div class="help-section">
+            <button id="helpToggleBtn" class="help-btn"><i class="fas fa-question-circle"></i> 使用说明</button>
+            <div id="helpContent" class="help-content hidden">
+                <h3>什么是URL？</h3>
+                <p>URL是网址的专业术语，例如：https://www.example.com/products?id=123#details</p>
+                
+                <div class="url-explanation">
+                    <h4>网址各部分说明：</h4>
+                    <div class="url-diagram">
+                        <div class="url-example">
+                            <span class="url-part protocol">https://</span><span class="url-part domain">www.example.com</span><span class="url-part path">/products</span><span class="url-part params">?id=123</span><span class="url-part fragment">#details</span>
+                        </div>
+                        <div class="url-parts">
+                            <div><span class="highlight protocol-color">协议部分</span>：网站的访问方式 (https://)</div>
+                            <div><span class="highlight domain-color">域名部分</span>：网站的地址 (www.example.com)</div>
+                            <div><span class="highlight path-color">路径部分</span>：网站内的具体页面位置 (/products)</div>
+                            <div><span class="highlight param-color">参数部分</span>：问号后的附加信息 (?id=123)</div>
+                            <div><span class="highlight fragment-color">锚点部分</span>：井号后的页面定位点 (#details)</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>如何使用本工具？</h3>
+                <ol>
+                    <li><strong>输入网址</strong>：在顶部输入框中粘贴您需要分析或修改的网址</li>
+                    <li><strong>点击解析</strong>：点击"解析URL"按钮，系统将自动分析网址结构</li>
+                    <li><strong>查看和编辑</strong>：在下方可以查看网址各部分，并可以添加、修改或删除参数</li>
+                    <li><strong>复制结果</strong>：完成修改后，可以直接复制修改后的网址</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- 输入区域 - 重新排列并增加说明 -->
+        <div class="main-section">
+            <div class="input-section">
+                <label for="urlInput">请输入需要分析的网址：</label>
+                <div class="input-group">
+                    <input type="text" id="urlInput" placeholder="例如: https://www.example.com/products?id=123">
+                    <button id="clearBtn" class="clear-url" title="清空输入">
+                        <i class="fas fa-times"></i>
+                        <span class="clear-tooltip">已清空!</span>
+                    </button>
+                </div>
+                <button id="parseBtn" class="parse-btn">解析网址</button>
+            </div>
+            
+            <!-- 结果URL展示区域 - 更明显的位置 -->
+            <div class="result-url-container">
+                <h3>处理后的网址</h3>
+                <div class="result-url-display">
+                    <div id="resultUrl" class="result-url"></div>
+                    <button id="copyResultBtn" class="copy-result" title="复制结果网址">
+                        <i class="fas fa-copy"></i>
+                        <span class="copy-tooltip">已复制!</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 分析结果区域 -->
+        <div class="analysis-section">
+            <div class="section-header">
+                <h2>网址结构分析</h2>
+                <p class="section-description">下方显示了网址的各个组成部分</p>
+            </div>
+            <div id="result"></div>
+        </div>
+        
+        <!-- 参数编辑区域 - 更清晰的标题和说明 -->
+        <div class="query-params">
+            <div class="section-header">
+                <h2>添加/修改参数</h2>
+                <p class="section-description">在这里可以向网址添加新的参数，参数会自动添加到网址中</p>
+            </div>
+            <div class="param-input-container">
+                <div class="param-input-fields">
+                    <div class="param-input-field">
+                        <label for="paramKey">参数名称</label>
+                        <input type="text" id="paramKey" placeholder="例如: page, id, source...">
+                    </div>
+                    <div class="param-input-field">
+                        <label for="paramValue">参数值</label>
+                        <input type="text" id="paramValue" placeholder="例如: 1, product123, wechat...">
+                    </div>
+                </div>
+                <div class="param-button-container">
+                    <button id="addParamBtn"><i class="fas fa-plus"></i> 添加参数</button>
+                </div>
+            </div>
+            
+            <!-- 常用参数区域 -->
+            <div class="common-params-section">
+                <h3>常用参数</h3>
+                <p class="section-description">点击下方按钮快速添加常用参数</p>
+                <div class="common-params-buttons">
+                    <button class="common-param-btn" onclick="addCommonParam('ADTAG', 'event.event_id.dst')">
+                        <i class="fas fa-plus-circle"></i> ADTAG
+                    </button>
+                    <button class="common-param-btn" onclick="addCommonParam('ac_hideShare', '2')">
+                        <i class="fas fa-plus-circle"></i> ac_hideShare
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 操作指南区域 -->
+        <div class="tips-section">
+            <h3>小贴士</h3>
+            <ul>
+                <li><i class="fas fa-info-circle"></i> 参数可以通过拖动 <i class="fas fa-grip-vertical"></i> 图标来调整顺序</li>
+                <li><i class="fas fa-info-circle"></i> 点击 <i class="fas fa-edit"></i> 图标可以修改参数</li>
+                <li><i class="fas fa-info-circle"></i> 点击 <i class="fas fa-trash"></i> 图标可以删除参数</li>
+            </ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.14.0/Sortable.min.js"></script>
+</body>
+</html>

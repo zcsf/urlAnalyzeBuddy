@@ -1,0 +1,706 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    width: 100%;
+    margin: 20px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 标题区域 */
+header {
+    text-align: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #7f8c8d;
+    font-size: 16px;
+    margin: 0;
+}
+
+/* 帮助说明区域 */
+.help-section {
+    margin-bottom: 25px;
+}
+
+.help-btn {
+    background-color: #f8f9fa;
+    color: #2c3e50;
+    border: 1px solid #ddd;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 0 auto;
+}
+
+.help-btn:hover {
+    background-color: #e9ecef;
+}
+
+.help-content {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.help-content.hidden {
+    display: none;
+}
+
+.help-content h3 {
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.help-content p {
+    margin-bottom: 15px;
+}
+
+.help-content ol {
+    padding-left: 20px;
+}
+
+.help-content li {
+    margin-bottom: 8px;
+}
+
+/* URL示例图解 */
+.url-explanation {
+    margin: 15px 0;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.url-diagram {
+    margin-top: 10px;
+}
+
+.url-example {
+    font-family: monospace;
+    font-size: 16px;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    word-break: break-all;
+    line-height: 1.8;
+}
+
+.url-part {
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+.protocol {
+    background-color: #e3f2fd;
+}
+
+.domain {
+    background-color: #e8f5e9;
+}
+
+.path {
+    background-color: #fff3e0;
+}
+
+.params {
+    background-color: #f3e5f5;
+}
+
+.fragment {
+    background-color: #e0f7fa;
+}
+
+.url-parts {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.highlight {
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.protocol-color {
+    background-color: #e3f2fd;
+    color: #0d47a1;
+}
+
+.domain-color {
+    background-color: #e8f5e9;
+    color: #1b5e20;
+}
+
+.path-color {
+    background-color: #fff3e0;
+    color: #e65100;
+}
+
+.param-color {
+    background-color: #f3e5f5;
+    color: #4a148c;
+}
+
+.fragment-color {
+    background-color: #e0f7fa;
+    color: #006064;
+}
+
+/* 主要内容区域 */
+.main-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+/* 输入区域 */
+.input-section {
+    margin-bottom: 15px;
+}
+
+.input-section label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+button {
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.parse-btn {
+    width: 100%;
+    background-color: #2ecc71;
+    font-weight: 500;
+}
+
+.parse-btn:hover {
+    background-color: #27ae60;
+}
+
+/* 清空按钮和复制按钮 */
+.clear-url, .copy-result {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 42px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.clear-url i, .copy-result i {
+    color: #495057;
+}
+
+.clear-url:hover, .copy-result:hover {
+    background-color: #e9ecef;
+}
+
+.clear-url:hover i, .copy-result:hover i {
+    color: #212529;
+}
+
+.clear-tooltip, .copy-tooltip {
+    visibility: hidden;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.clear-url:hover .clear-tooltip, .copy-result:hover .copy-tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* 结果URL展示区域 */
+.result-url-container {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+}
+
+.result-url-container h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #2c3e50;
+    font-size: 16px;
+}
+
+.result-url-display {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.result-url {
+    flex-grow: 1;
+    padding: 12px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    word-break: break-all;
+    font-family: monospace;
+    line-height: 1.5;
+    min-height: 42px;
+}
+
+/* 分析结果区域 */
+.analysis-section {
+    margin-bottom: 25px;
+}
+
+.section-header {
+    margin-bottom: 15px;
+}
+
+.section-header h2 {
+    color: #2c3e50;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+.section-description {
+    color: #7f8c8d;
+    margin: 0;
+    font-size: 14px;
+}
+
+#result {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+}
+
+/* URL信息展示 */
+.url-info {
+    margin-bottom: 15px;
+}
+
+.url-info div {
+    margin: 8px 0;
+    padding: 8px;
+    background-color: #fff;
+    border-radius: 6px;
+    border: 1px solid #eee;
+}
+
+/* 参数列表 */
+.query-params-container {
+    margin-top: 20px;
+}
+
+.query-params-container h3 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.params-list {
+    margin-top: 10px;
+}
+
+/* 参数项样式 */
+.param-item {
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.param-item:hover {
+    border-color: #3498db;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.param-item.dragging {
+    opacity: 0.5;
+    background: #f8f9fa;
+}
+
+.param-item.editing {
+    background-color: #fff8e1;
+    border-left: 3px solid #ffc107;
+}
+
+.drag-handle {
+    cursor: move;
+    color: #999;
+    margin-right: 12px;
+    padding: 5px;
+    flex: 0 0 auto;
+}
+
+.drag-handle:hover {
+    color: #666;
+}
+
+.param-key {
+    font-weight: bold;
+    margin-right: 5px;
+    min-width: 100px;
+    flex: 0 0 auto;
+    max-width: 30%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.param-value {
+    flex: 1 1 auto;
+    margin-right: 10px;
+    word-break: break-all;
+    min-width: 0; /* 防止内容溢出 */
+}
+
+.param-actions {
+    display: flex;
+    gap: 12px;
+    flex: 0 0 auto;
+    margin-left: auto;
+}
+
+.param-actions i {
+    cursor: pointer;
+    color: #666;
+    font-size: 14px;
+    padding: 5px;
+}
+
+.param-actions i:hover {
+    color: #333;
+}
+
+/* 参数编辑状态样式 */
+.param-edit {
+    border: 1px solid #ddd;
+    padding: 5px 8px;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    min-width: 0; /* 防止内容溢出 */
+}
+
+/* 编辑状态下的参数项布局 */
+.param-item.editing {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: 
+        "handle key actions"
+        "handle value actions";
+    gap: 5px 10px;
+    align-items: center;
+}
+
+.param-item.editing .drag-handle {
+    grid-area: handle;
+    align-self: center;
+}
+
+.param-item.editing .param-key {
+    grid-area: key;
+    max-width: 100%;
+    width: 100%;
+}
+
+.param-item.editing .param-value {
+    grid-area: value;
+    width: 100%;
+}
+
+.param-item.editing .param-actions {
+    grid-area: actions;
+    align-self: center;
+}
+
+/* 参数添加区域 */
+.query-params {
+    margin-bottom: 25px;
+}
+
+/* 新的参数输入容器样式 */
+.param-input-container {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.param-input-fields {
+    display: flex;
+    gap: 15px;
+}
+
+.param-input-field {
+    flex: 1;
+    min-width: 0; /* 防止内容溢出 */
+}
+
+.param-input-field label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #2c3e50;
+}
+
+.param-input-field input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box; /* 确保padding不会增加宽度 */
+}
+
+.param-button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#addParamBtn {
+    min-width: 120px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 0 20px;
+    background-color: #3498db;
+}
+
+/* 常用参数区域 */
+.common-params-section {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.common-params-section h3 {
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.common-params-section .section-description {
+    color: #7f8c8d;
+    margin: 0 0 15px 0;
+    font-size: 14px;
+}
+
+.common-params-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.common-param-btn {
+    background-color: #17a2b8;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background-color 0.3s;
+}
+
+.common-param-btn:hover {
+    background-color: #138496;
+}
+
+.common-param-btn i {
+    font-size: 12px;
+}
+
+/* Toast 提示样式 */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #28a745;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    max-width: 300px;
+    word-wrap: break-word;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.toast i {
+    font-size: 16px;
+}
+
+/* 小贴士区域 */
+.tips-section {
+    background-color: #e3f2fd;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.tips-section h3 {
+    color: #0d47a1;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.tips-section ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.tips-section li {
+    margin-bottom: 8px;
+    color: #1565c0;
+}
+
+.tips-section i {
+    margin-right: 5px;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .container {
+        margin: 10px;
+        padding: 20px;
+    }
+    
+    .param-input-fields {
+        flex-direction: column;
+    }
+    
+    .param-button-container {
+        justify-content: stretch;
+    }
+    
+    #addParamBtn {
+        width: 100%;
+    }
+    
+    /* 移动端编辑状态调整 */
+    .param-item.editing {
+        grid-template-columns: auto 1fr;
+        grid-template-areas: 
+            "handle actions"
+            "key key"
+            "value value";
+    }
+}
+
+/* 参数高亮显示 */
+.param-highlight {
+    background-color: #f3e5f5;
+    padding: 2px 4px;
+    border-radius: 3px;
+    border: 1px dashed #9c27b0;
+}
+
+/* 无参数提示样式 */
+.no-params {
+    color: #7f8c8d;
+    font-style: italic;
+    text-align: center;
+    padding: 10px;
+}
+
